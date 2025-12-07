@@ -228,6 +228,22 @@
             background-color: #222;
         }
 
+        /* NEW: Split images for cards with 2 images */
+        .double-img {
+            display: flex;
+            height: 350px;
+            width: 100%;
+        }
+        .double-img img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-right: 1px solid var(--bg-card);
+        }
+        .double-img img:last-child {
+            border-right: none;
+        }
+
         .style-content {
             padding: 1.5rem;
             width: 100%;
@@ -538,9 +554,12 @@
             <div class="container">
                 <h2 class="section-title">Trabajos Recientes</h2>
                 <div class="styles-grid">
-                    <!-- Card 1 -->
+                    <!-- Card 1: UPDATED TO HAVE 2 IMAGES -->
                     <div class="style-card">
-                        <img src="ryu_dragon_azul_brazo.png" alt="RYU / Dragon azul Brazo" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <div class="double-img">
+                            <img src="ryu_dragon_brazo1.png" alt="RYU / Dragon azul Brazo 1" onerror="this.style.backgroundColor='#333'">
+                            <img src="ryu_dragon_brazo2.png" alt="RYU / Dragon azul Brazo 2" onerror="this.style.backgroundColor='#333'">
+                        </div>
                         <div class="style-content">
                             <h3>RYU / Dragon azul Brazo</h3>
                         </div>
@@ -564,7 +583,7 @@
 
                      <!-- Card 4 -->
                      <div class="style-card">
-                        <img src="gato_serpiente.png" alt="Gato y Serpiente" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <img src="gato_serp.png" alt="Gato y Serpiente" class="style-img" onerror="this.style.backgroundColor='#333'">
                         <div class="style-content">
                             <h3>Gato y Serpiente</h3>
                         </div>
