@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ariel.TTT - Tatuador especializado en Black & Grey y Estilo Japonés. Diseños personalizados y arte corporal.">
+    <title>Ariel.TTT | Black & Grey Japanese Tattoo</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Black & Grey Palette */
+            --bg-black: #0a0a0a;
+            --bg-dark: #121212;
+            --bg-card: #1a1a1a;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-white: #ffffff;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clean, classic sans-serif */
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* LOGO STYLES */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--accent-white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .logo-text .tagline {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            /* Dark gradient background simulating ink/smoke */
+            background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
+            color: var(--accent-white);
+            padding: 8rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .hero-content h2 span {
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-white);
+            padding: 1rem 3rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1px solid var(--accent-white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-white);
+            color: var(--bg-black);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent-white);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+        }
+        
+        /* Little decorative line under titles */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--text-muted);
+            margin: 15px auto 0;
+        }
+
+        /* Gallery/Styles Section */
+        .styles {
+            background-color: var(--bg-black);
+        }
+
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .style-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .style-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--text-muted);
+        }
+
+        .style-img {
+            width: 100%;
+            height: 350px; /* Taller for tattoo display */
+            object-fit: cover;
+            background-color: #222;
+        }
+
+        .style-content {
+            padding: 1.5rem;
+            width: 100%;
+        }
+
+        .style-card h3 {
+            color: var(--accent-white);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            background-color: var(--bg-dark);
+            padding-bottom: 4rem;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            padding-bottom: 20px; /* Space for scrollbar */
+            
+            /* Hide scrollbar for cleaner look (optional, but good for design) */
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-muted) var(--bg-black);
+        }
+
+        .carousel-track {
+            display: inline-flex;
+            gap: 20px;
+            padding: 0 20px; /* Side padding so first item isn't flush */
+        }
+
+        .carousel-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Custom Scrollbar for Carousel */
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .carousel-container::-webkit-scrollbar-track {
+            background: var(--bg-black);
+        }
+        .carousel-container::-webkit-scrollbar-thumb {
+            background-color: var(--text-muted);
+            border-radius: 4px;
+        }
+
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-black);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--accent-white);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            line-height: 0;
+        }
+
+        /* Booking Section */
+        .booking {
+            background-color: var(--bg-dark);
+            padding: 5rem 0;
+        }
+
+        .booking-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .booking-content > p {
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+        }
+
+        .booking-form {
+            background-color: var(--bg-card);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--bg-black);
+            border: 1px solid var(--border-color);
+            color: var(--accent-white);
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-white);
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: var(--accent-white);
+            color: var(--bg-black);
+            padding: 1rem;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #cccccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-black);
+            color: var(--text-muted);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: var(--accent-white);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links a {
+            color: var(--accent-white);
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form {
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">
+                    <!-- Updated to use logo.png -->
+                    <img src="logo.png" alt="Ariel.TTT Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Ariel.TTT</h1>
+                        <p class="tagline">Arte Japonés & Blackwork</p>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#portfolio">Portafolio</a></li>
+                    <li><a href="#cats">Gatos</a></li>
+                    <li><a href="#booking">Citas</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Arte <span>Eterno</span></h2>
+                    <p class="hero-subtitle">Especialista en Composición Japonesa y Black & Grey</p>
+                    <p>Transformando la piel en lienzo. Diseños exclusivos adaptados a la anatomía del cuerpo, respetando la tradición con una visión contemporánea.</p>
+                    <a href="#booking" class="cta-button">Agendar Consulta</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="styles">
+            <div class="container">
+                <h2 class="section-title">Trabajos Recientes</h2>
+                <div class="styles-grid">
+                    <!-- Card 1 -->
+                    <div class="style-card">
+                        <img src="ryu_dragon_azul_brazo.png" alt="RYU / Dragon azul Brazo" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <div class="style-content">
+                            <h3>RYU / Dragon azul Brazo</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="style-card">
+                        <img src="perro_fu_mano.png" alt="PERRO FU Mano" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <div class="style-content">
+                            <h3>PERRO FU Mano</h3>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="style-card">
+                        <img src="ryu_dragon_espalda.png" alt="RYU / Dragon Espalda" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <div class="style-content">
+                            <h3>RYU / Dragon Espalda</h3>
+                        </div>
+                    </div>
+
+                     <!-- Card 4 -->
+                     <div class="style-card">
+                        <img src="gato_serpiente.png" alt="Gato y Serpiente" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <div class="style-content">
+                            <h3>Gato y Serpiente</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Gatos Carousel Section -->
+        <section id="cats" class="carousel-section">
+            <div class="container">
+                <h2 class="section-title">Galería Gatos</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- 6 Images -->
+                        <div class="carousel-item">
+                            <img src="Gato_1.PNG" alt="Diseño Gato 1" onerror="this.style.backgroundColor='#222'">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Gato_2.PNG" alt="Diseño Gato 2" onerror="this.style.backgroundColor='#222'">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Gato_3.PNG" alt="Diseño Gato 3" onerror="this.style.backgroundColor='#222'">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Gato_4.PNG" alt="Diseño Gato 4" onerror="this.style.backgroundColor='#222'">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Gato_5.PNG" alt="Diseño Gato 5" onerror="this.style.backgroundColor='#222'">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Gato_6.PNG" alt="Diseño Gato 6" onerror="this.style.backgroundColor='#222'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="artist" class="about">
+            <div class="container">
+                <h2 class="section-title">El Artista</h2>
+                <div class="about-content">
+                    <!-- Abstract representation of artist photo -->
+                    <div style="background-color: #111; height: 400px; display: flex; align-items: center; justify-content: center; border: 1px solid #333;">
+                        <span style="color: #444; font-size: 1.5rem; letter-spacing: 2px;">[FOTO ARTISTA]</span>
+                    </div>
+                    
+                    <div class="about-text">
+                        <h3>Filosofía del Tatuaje</h3>
+                        <p>En el estudio de Ariel.TTT, el tatuaje no es solo una imagen, es un compromiso con la piel. Me especializo en la reinterpretación del estilo japonés clásico, eliminando el color para enfocarme en la elegancia del negro y las texturas del gris.</p>
+                        <p>Cada pieza es dibujada a mano y ajustada el día de la sesión para asegurar un flujo perfecto ("Nagare") con la anatomía del cliente.</p>
+                        
+                        <ul class="feature-list">
+                            <li>Diseño Custom Exclusivo</li>
+                            <li>Técnica Black & Grey Smooth</li>
+                            <li>Materiales de un solo uso y estériles</li>
+                            <li>Ambiente privado y profesional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking">
+            <div class="container">
+                <h2 class="section-title">Cotizar Proyecto</h2>
+                <div class="booking-content">
+                    <p>La agenda se abre trimestralmente. Por favor, sé lo más descriptivo posible con tu idea para asegurar una respuesta precisa.</p>
+                    
+                    <form class="booking-form" action="#" method="post">
+                        
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="Nombre" placeholder="Tu nombre" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="Email" placeholder="tucorreo@ejemplo.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="placement">Zona del Cuerpo</label>
+                            <input type="text" id="placement" name="Zona" placeholder="Ej: Antebrazo interno, Espalda completa..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="size">Tamaño Aproximado (cm)</label>
+                            <input type="text" id="size" name="Tamaño" placeholder="Ej: 15x10 cm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Descripción de la idea</label>
+                            <textarea id="message" name="Mensaje" rows="5" placeholder="Describe los elementos que quieres incluir (ej: Dragón, nubes, flores...)."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Ariel.TTT</h3>
+                    <p>Japanese Blackwork Tattoo</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <p>Santiago, Chile</p>
+                    <p>Solo con cita previa</p>
+                    <p>ariel.ttt@email.com</p>
+                </div>
+
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">TikTok</a>
+                    <a href="#">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ariel.TTT. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
