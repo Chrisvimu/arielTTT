@@ -226,6 +226,12 @@
             height: 350px; /* Taller for tattoo display */
             object-fit: cover;
             background-color: #222;
+            cursor: pointer; /* Indicates clickable */
+            transition: opacity 0.3s ease;
+        }
+        
+        .style-img:hover {
+            opacity: 0.8;
         }
 
         /* NEW: Split images for cards with 2 images */
@@ -239,6 +245,11 @@
             height: 100%;
             object-fit: cover;
             border-right: 1px solid var(--bg-card);
+            cursor: pointer; /* Indicates clickable */
+            transition: opacity 0.3s ease;
+        }
+        .double-img img:hover {
+            opacity: 0.8;
         }
         .double-img img:last-child {
             border-right: none;
@@ -297,6 +308,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
+            cursor: pointer; /* Indicates clickable */
         }
 
         .carousel-item:hover img {
@@ -502,6 +514,59 @@
             font-size: 0.8rem;
         }
 
+        /* Modal / Lightbox Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            position: relative;
+            z-index: 2001;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s;
+        }
+
+        /* Watermark */
+        .modal-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%; /* Relative to screen/container size */
+            max-width: 400px;
+            opacity: 0.15; /* Transparent ghost effect */
+            z-index: 2002;
+            pointer-events: none; /* Allows clicks to pass through to close modal */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {opacity: 0} 
+            to {opacity: 1}
+        }
+        
+        @keyframes zoomIn {
+            from {transform: scale(0.9); opacity: 0} 
+            to {transform: scale(1); opacity: 1}
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar .container {
@@ -530,6 +595,10 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .modal-watermark {
+                width: 60%;
             }
         }
     </style>
@@ -576,8 +645,8 @@
                     <!-- Card 1: UPDATED TO HAVE 2 IMAGES -->
                     <div class="style-card">
                         <div class="double-img">
-                            <img src="ryu_dragon_brazo1.png" alt="RYU / Dragon azul Brazo 1" onerror="this.style.backgroundColor='#333'">
-                            <img src="ryu_dragon_brazo2.png" alt="RYU / Dragon azul Brazo 2" onerror="this.style.backgroundColor='#333'">
+                            <img src="ryu_dragon_brazo1.png" alt="RYU / Dragon azul Brazo 1" onerror="this.style.backgroundColor='#333'" class="preview-trigger">
+                            <img src="ryu_dragon_brazo2.png" alt="RYU / Dragon azul Brazo 2" onerror="this.style.backgroundColor='#333'" class="preview-trigger">
                         </div>
                         <div class="style-content">
                             <h3>RYU / Dragon azul Brazo</h3>
@@ -586,7 +655,7 @@
                     
                     <!-- Card 2 -->
                     <div class="style-card">
-                        <img src="perro_fu_mano.png" alt="PERRO FU Mano" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <img src="perro_fu_mano.png" alt="PERRO FU Mano" class="style-img preview-trigger" onerror="this.style.backgroundColor='#333'">
                         <div class="style-content">
                             <h3>PERRO FU Mano</h3>
                         </div>
@@ -594,7 +663,7 @@
 
                     <!-- Card 3 -->
                     <div class="style-card">
-                        <img src="ryu_dragon_espalda.png" alt="RYU / Dragon Espalda" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <img src="ryu_dragon_espalda.png" alt="RYU / Dragon Espalda" class="style-img preview-trigger" onerror="this.style.backgroundColor='#333'">
                         <div class="style-content">
                             <h3>RYU / Dragon Espalda</h3>
                         </div>
@@ -602,7 +671,7 @@
 
                      <!-- Card 4 -->
                      <div class="style-card">
-                        <img src="gato_serp.png" alt="Gato y Serpiente" class="style-img" onerror="this.style.backgroundColor='#333'">
+                        <img src="gato_serp.png" alt="Gato y Serpiente" class="style-img preview-trigger" onerror="this.style.backgroundColor='#333'">
                         <div class="style-content">
                             <h3>Gato y Serpiente</h3>
                         </div>
@@ -619,22 +688,22 @@
                     <div class="carousel-track">
                         <!-- 6 Images -->
                         <div class="carousel-item">
-                            <img src="gato_1.png" alt="Diseño Gato 1" onerror="this.style.backgroundColor='#222'">
+                            <img src="gato_1.png" alt="Diseño Gato 1" onerror="this.style.backgroundColor='#222'" class="preview-trigger">
                         </div>
                         <div class="carousel-item">
-                            <img src="gato_2.png" alt="Diseño Gato 2" onerror="this.style.backgroundColor='#222'">
+                            <img src="gato_2.png" alt="Diseño Gato 2" onerror="this.style.backgroundColor='#222'" class="preview-trigger">
                         </div>
                         <div class="carousel-item">
-                            <img src="gato_3.png" alt="Diseño Gato 3" onerror="this.style.backgroundColor='#222'">
+                            <img src="gato_3.png" alt="Diseño Gato 3" onerror="this.style.backgroundColor='#222'" class="preview-trigger">
                         </div>
                         <div class="carousel-item">
-                            <img src="gato_4.png" alt="Diseño Gato 4" onerror="this.style.backgroundColor='#222'">
+                            <img src="gato_4.png" alt="Diseño Gato 4" onerror="this.style.backgroundColor='#222'" class="preview-trigger">
                         </div>
                         <div class="carousel-item">
-                            <img src="gato_5.png" alt="Diseño Gato 5" onerror="this.style.backgroundColor='#222'">
+                            <img src="gato_5.png" alt="Diseño Gato 5" onerror="this.style.backgroundColor='#222'" class="preview-trigger">
                         </div>
                         <div class="carousel-item">
-                            <img src="gato_6.png" alt="Diseño Gato 6" onerror="this.style.backgroundColor='#222'">
+                            <img src="gato_6.png" alt="Diseño Gato 6" onerror="this.style.backgroundColor='#222'" class="preview-trigger">
                         </div>
                     </div>
                 </div>
@@ -646,7 +715,7 @@
                 <h2 class="section-title">El Artista</h2>
                 <div class="about-content">
                     <!-- Image of Artist with new class for focus effect -->
-                    <img src="foto_artista.png" alt="Ariel.TTT - El Artista" class="artist-img" onerror="this.style.backgroundColor='#111'">
+                    <img src="foto_artista.png" alt="Ariel.TTT - El Artista" class="artist-img preview-trigger" onerror="this.style.backgroundColor='#111'">
                     
                     <div class="about-text">
                         <h3>Filosofía del Tatuaje</h3>
@@ -728,5 +797,36 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal for Image Preview -->
+    <div id="imageModal" class="modal">
+        <!-- Watermark Logo -->
+        <img src="logo.png" alt="Watermark" class="modal-watermark">
+        <!-- Main Zoomed Image -->
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("imageModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var modalImg = document.getElementById("modalImg");
+        
+        // Select all images intended for preview (added generic selectors for robustness)
+        var images = document.querySelectorAll('.style-card img, .carousel-item img, .artist-img, .double-img img');
+
+        images.forEach(img => {
+            img.addEventListener('click', function(){
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+            });
+        });
+
+        // Close the modal when clicking anywhere on the modal container
+        modal.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+    </script>
 </body>
 </html>
